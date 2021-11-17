@@ -1,36 +1,43 @@
 const express = require('express');
 const router = express.Router();
-const UserModel= require("../models/userModel")
-
-const UserController= require("../controllers/userController")
+const BookModel= require("../models/bookModel")
 const BookController= require("../controllers/bookController")
-const AssignmentBookController= require("../controllers/assignmentBookController")
 
+const newBookController= require("../controllers/newbookController")
+
+const authorController= require("../controllers/authorController")
 
 router.get('/test-me', function (req, res) {
     res.send('My first ever api!')
 });
+//ASSIGNMENT 1
+router.post('/createBooks',  BookController.createBooks  );
+router.get('/bookList',  BookController.bookList  );
+router.post('/getBooksInYear',  BookController.getBooksInYear );
+router.post('/getParticularBooks',  BookController.getParticularBooks  );
+router.get('/getXINRBooks',  BookController.getXINRBooks );
+router.get('/getRandomBooks',  BookController.getRandomBooks );
+//ASSIGNMENT 2
+//Api's for newBooks
+router.post('/createnewBooks',  newBookController.createnewBooks  );
+router.get('/booksByChetan',  newBookController.booksByChetan  );
+router.get('/twostates',  newBookController.twostates  );
+router.get('/books',  newBookController.books  );
+//Api's for Author
+router.post('/createauthor',  authorController.createauthor );
 
-router.post('/createUser',  UserController.createUser  );
-router.get('/getAllUsers',  UserController.getUsersData  );
-
-router.post('/createBook',  BookController.createBook  );
-router.get('/getAllBooks',  BookController.getBooksData  );
-
-// mongo session 3: session/schema-basic3
-router.get('/getFirstBook',  BookController.getBook  );
-router.post('/updateBooks',  BookController.updateBooks  );
-
-router.post('/deleteBook',  BookController.deleteBook  );
 
 
-// Previous Day asignment API's
-router.post('/createBook',  AssignmentBookController.createBook  );
-router.get('/bookList',  AssignmentBookController.allBooksList  );
-router.post('/getParticularBooks',  AssignmentBookController.particularBooks  );
- router.post('/getBooksInYear',AssignmentBookController.yearDetails);
-router.get('/getXINRBooks',  AssignmentBookController.priceDetails  );
-router.get('/getRandomBooks', AssignmentBookController.randomBooks  );
+
+
+
+
+
+
+
+
+
+
 
 
 
