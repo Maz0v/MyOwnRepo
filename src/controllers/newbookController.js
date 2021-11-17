@@ -3,8 +3,12 @@ const authorModel= require("../models/authorModel")
 //ASSIGNMENT 1
 const createnewBooks= async function (req, res) {
     var data= req.body
-    let savedData= await newBookModel.create(data)
-    res.send({msg: savedData})    
+    if(req.body==req.body.author_id){
+       let savedData= await newBookModel.create(data)
+       res.send({msg: savedData}) 
+    }else{
+        res.send({msg:"plz enter author_id"})
+    }   
 }
 
 const booksByChetan = async function(req,res){
