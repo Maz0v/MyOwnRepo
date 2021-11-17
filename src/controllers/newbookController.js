@@ -28,9 +28,20 @@ const twostates = async function(req,res){
 
    const books = async function(req,res){
        let idd= await newBookModel.find({price:{$gte:50}&&{$lte:100}}).select({author_id:1,_id:0})
-       let author=await authorModel.find(idd.author_id).select({author_name:1,_id:0})
+       let arr=[]
+     
+       for(let i=0;i<idd.length;i++){
+          let x=idd[i].author_id 
+          arr.push(x)
+      }
+      
+
+       let author=await authorModel.find({author_id:arr}).select({author_name:1,_id:0})
        res.send(author)
    }
+
+
+   
 
 
 
