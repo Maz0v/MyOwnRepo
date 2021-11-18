@@ -1,5 +1,5 @@
 const authorModel= require("../models/authorModel")
-//ASSIGNMENT 1
+//ASSIGNMENT 2
 const createauthor= async function (req, res) {
     var data= req.body
     if(req.body==req.body.author_id){
