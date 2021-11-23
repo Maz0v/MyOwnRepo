@@ -1,21 +1,23 @@
 const express = require('express');
 const router = express.Router();
+const user=require('../controllers/userController')
+const product=require('../controllers/productController')
+const order=require('../controllers/orderConlroller')
+const middleware=require('../middlewares/headerMw')
+const myuser=require('../controllers/myuserController')
+const login =require('../controllers/loginController')
+const loginmw=require('../middlewares/loginmw')
 
-const authorController= require("../controllers/authorController")
-const BookController= require("../controllers/bookController")
-const publisherController= require("../controllers/publishercontroller")
+// user API
+router.post('/createuser', middleware.mid, user.createmyUser );
 
-
-
-// Authors API
-router.post('/authors',  authorController.createmyAuthor  );
-
-
-// Books API
-router.post('/books',  BookController.createBook  );
-router.get('/allbooks',  BookController.getbooks  );
-// Publishers API
-router.post('/createpublisher', publisherController.createmypublisher)
-
-
+//product API
+router.post('/createproduct',  product.createmyproduct );
+// order API
+router.post('/createorder', middleware.mid, order.createmyorder );
+//23/11/21
+router.post('/createnewuser',  myuser.createnewUser );
+router.post('/createlogin',login.createnewlogin)
+router.get('/users/:userid',loginmw.loginmw,myuser.getuser)
+router.put('/users/:userid',loginmw.loginmw,myuser.putuser)
 module.exports = router;
