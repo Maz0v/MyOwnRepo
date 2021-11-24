@@ -12,8 +12,9 @@ let userpassword =req.body.password;
 const finduser=await myuserModel.findOne({name:username,password:userpassword,isDeleted:false})
 if (finduser ){
      //await loginModel.create(userdata)
-     let token = jwt.sign({userid:finduser._id},"radium")
-    res.send({status: true,data:{userid:finduser._id},token})
+     let token = jwt.sign({_id:finduser._id},"radium")
+     res.header('x-auth-token',token)
+    res.send({status: true,data:{userid:finduser._id}})
 }else{
     res.send({status: false,msg:"Enter correct name and password"})
 }
