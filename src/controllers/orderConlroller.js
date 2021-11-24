@@ -6,7 +6,7 @@ const productModel = require("../models/productModel")
 
 const createmyorder = async function (req, res) {
 
-    let orderdata = req.body;
+    //let orderdata = req.body;
     let uid = req.body.userId;
     let pid = req.body.productId;
     let user = await userModel.findById(uid);

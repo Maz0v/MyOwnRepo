@@ -4,7 +4,7 @@ const loginmw = function (req, res, next) {
     const usermodel = require('../models/userModel')
     let headerdata = req.headers["x-auth-token"];
     let decoded = jwt.verify(headerdata, "radium")
-    //console.log(decoded._id)
+    
     if (headerdata) {
         if (decoded) {
            req.validToken=decoded

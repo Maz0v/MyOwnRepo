@@ -19,7 +19,7 @@ const getuser = async function (req, res) {
 
     if (req.validToken._id == uid) {
 
-        let userdata = await myUserModel.findById({ _id: uid })
+        let userdata = await myUserModel.findById({ _id: uid ,isDeleted:false })
         if (userdata) {
             res.send({ status: true, data: { userdata } })
         } else {
@@ -36,7 +36,7 @@ const putuser = async function (req, res) {
     let uidd = req.params.userid
     if (req.validToken._id == uidd) {
         let upadetedemail = req.body.email
-        let userdata = await myUserModel.findById({ _id: uidd })
+        let userdata = await myUserModel.findById({ _id: uidd ,isDeleted:false})
         if (userdata) {
             let updatemail = await myUserModel.findOneAndUpdate({ _id: uidd }, { email: upadetedemail }, { new: true })
             res.send({ status: true, data: { updatemail } })
