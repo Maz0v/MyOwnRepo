@@ -113,7 +113,7 @@ const londonTemp = async function (req, res) {
 
     console.log(weatherdata)
     // let london = weatherdata;
-    res.status(200).send({ msg: "Successfully fetched data", data: weatherdata.data });
+    res.status(200).send({ msg: "Successfully fetched data", data: weatherdata.data.main.temp });
 
   }
   catch (err) {
